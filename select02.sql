@@ -95,6 +95,131 @@ select distinct job, deptno from emp;
 select distinct(job), deptno from emp;
 -- job, deptno 합산한 중복값 제거
 
+-- 조건 WHERE절 : 필터링, 원하는 조건에 따라 조회
+
+SELECT ... FROM ...
+WHERE ... ;
+
+SELECT * FROM emp;
+
+SELECT * FROM emp
+WHERE sal > 2500;
+
+SELECT ename FROM emp
+WHERE sal > 2500;
+
+SELECT * FROM emp
+WHERE job = 'SALESMAN';
+-- ' 작은 따옴표 사용
+
+SELECT *
+FROM emp
+WHERE deptno = 10;
+
+SELECT *
+FROM emp
+WHERE deptno != 10;
+
+SELECT *
+FROM emp
+WHERE deptno <> 10;
+-- 다르다 : != or <>
+
+SELECT *
+FROM student
+WHERE weight >= 55 AND weight <= 70;
+
+SELECT *
+FROM student
+WHERE weight BETWEEN 55 AND 70;
+
+SELECT *
+FROM student
+WHERE grade IN (1, 2, 3);
+-- grade BETWEEN 1 AND 3;
+-- grade >= 1 AND grade <= 3;
+-- grade = 1 OR grade = 2 OR grade = 3;
+-- grade <> 4 or grade != 4;
+
+SELECT *
+FROM student
+WHERE grade IN(2, 4)
+OR (grade != 1 AND grade <> 3)
+OR (grade = 2 OR grade = 4)
+OR grade NOT IN(1, 3);
+
+-- LIKE : 패턴 검색(문자)
+    % : 0 ~ n 개 아무갯수
+    _ : 그 위치에 한 개
+
+SELECT *
+FROM emp
+WHERE ename LIKE '%M%';
+-- ename 'M'이 들어가는지(M~, ~M, ~M~)
+-- 'M%' : M~
+-- '%M' : ~M
+
+SELECT *
+FROM emp
+WHERE ename LIKE '__M%';
+-- 반대의 경우?
+
+SELECT *
+FROM emp
+WHERE comm IS NOT NULL;
+
+SELECT *
+FROM emp
+WHERE comm IS NULL;
+
+-- 날짜비교
+1201 < 1221
+과거 < 미래
+
+SELECT *
+FROM emp
+WHERE hiredate <= '1981/04/05';
+--WHERE hiredate > '80/08/20';
+--WHERE hiredate = '1981-05-01';
+--WHERE hiredate = '81/05/01';
+-- 테이블 정보 팝업설명 단축키 : Shift + F4
+
+-- 정렬 ORDER BY
+단순 조회 -> 정렬을 명시하지 않으면 순서보장 x
+ORDER BY 정렬기준컬럼명 [ASC|DESC] [오름차순|내림차순]
+
+SELECT ...
+FROM ...
+WHERE ...
+ORDER BY ...
+
+SELECT ...
+FROM ...
+ORDER BY ... ;
+
+SELECT *
+FROM student
+ORDER BY name DESC;
+
+SELECT *
+FROM student
+ORDER BY grade DESC, height DESC;
+
+SELECT *
+FROM student
+WHERE grade IN(1, 2, 3)
+ORDER BY height DESC; 
+
+SELECT *
+FROM student
+WHERE grade IN(1, 2, 3)
+ORDER BY grade, height DESC; 
+
+SELECT *
+FROM student
+ORDER BY birthday DESC;
+
+
 
 
 
