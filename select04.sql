@@ -87,3 +87,32 @@ FROM dual;
 SELECT rownum, empno, CEIL(rownum/3) 그룹, CEIL(rownum/4) 팀
 FROM emp;
 -- rownun 모든 테이블에 들어가 있는 기본 값
+
+-- 날짜
+SELECT 
+    SYSDATE, -- 현재 날짜
+    SYSTIMESTAMP, -- 현재 날짜시간
+    MONTHS_BETWEEN('2024-01-05', '2024-03-05')
+FROM dual;
+
+SELECT 
+    ADD_MONTHS(SYSDATE, 3),
+    LAST_DAY(SYSDATE),
+    NEXT_DAY(SYSDATE, '토')
+FROM dual;
+
+SELECT
+    SYSDATE,
+    ROUND(SYSDATE),
+    TRUNC(SYSDATE, 'YY'),
+    TRUNC(SYSDATE, 'MM'),
+    TRUNC(SYSDATE, 'DD'),
+    ADD_MONTHS(SYSDATE, 1),
+    SYSDATE + 3, -- 일 단위 계산
+    
+    LAST_DAY(SYSDATE) + 1,
+    TRUNC(ADD_MONTHS(SYSDATE, 1), 'MM'), -- 다음 달 첫 날
+    TRUNC(SYSDATE, 'MM')-1
+FROM dual;
+
+
