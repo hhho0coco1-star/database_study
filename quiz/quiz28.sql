@@ -1,0 +1,25 @@
+
+-- 1. 테이블 생성
+CREATE TABLE T_ITEM_LIST
+(
+    no NUMBER(6) PRIMARY KEY,
+    item_name VARCHAR2(24) NOT NULL,
+    price NUMBER(6),
+    create_date DATE DEFAULT SYSDATE
+);
+
+-- 2. 시퀀스 생성
+CREATE SEQUENCE T_ITEM_LIST_PK_SEQ
+START WITH 1
+INCREMENT BY 1
+MINVALUE 1
+MAXVALUE 999999
+NOCYCLE;
+
+-- 3.
+SELECT T_ITEM_LIST_PK_SEQ.nextval FROM dual;
+
+INSERT INTO T_ITEM_LIST (no, item_name, price, create_date)
+VALUES (T_ITEM_LIST_PK_SEQ.nextval, '아이템1', 5000, SYSDATE);
+
+SELECT * FROM T_ITEM_LIST;
